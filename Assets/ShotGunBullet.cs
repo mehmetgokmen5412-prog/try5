@@ -16,7 +16,7 @@ public class ShotgunBullet : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             other.GetComponent<EnemyHealth>().HasarAl(hasar);
-            // Burada Destroy yok, yani delip geçer!
+           
         }
         // Duvara çarpınca yok olsun
         else if (other.CompareTag("Wall"))
