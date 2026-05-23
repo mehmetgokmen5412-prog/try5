@@ -31,7 +31,7 @@ public class Spawner : MonoBehaviour
             Instantiate(ZombieBoyPrefab, spawnPoint.position, Quaternion.identity);
         }
 
-        // Doğumdan sonra tekrar rastgele bir süre belirle ve kendini çağır
+       
         DöngüyüBaslat();
     }
 }
