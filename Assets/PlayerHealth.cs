@@ -19,7 +19,7 @@ public class PlayerHealth : MonoBehaviour
     void OyuncuOldu()
     {
         Debug.Log("Oyun Bitti! Oyuncu öldü.");
-
+        print("öldün");
 Destroy (gameObject);
     }
 }
