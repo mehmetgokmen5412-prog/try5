@@ -27,7 +27,7 @@ public class ShotgunBullet : MonoBehaviour
 
     void Start()
     {
-        // Mermi kaybolmasın diye ömrünü biraz uzun tutabilirsin
+        
         Destroy(gameObject, 1f);
     }
 }
