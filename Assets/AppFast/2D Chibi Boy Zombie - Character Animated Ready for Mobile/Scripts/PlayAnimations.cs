@@ -6,7 +6,7 @@ namespace NetDinamica.AppFast
     public class PlayAnimations : MonoBehaviour
     {
 
-        // Use this for initialization
+       
         Animator anim;
         bool facingRight = true;
 
