@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ShotgunBullet : MonoBehaviour
+public class ShotGunBullet : MonoBehaviour
 {
     public float hız = 25f;
     public int hasar = 5; // Shotgun mermisi az hasar verir ama 6 tane gider
