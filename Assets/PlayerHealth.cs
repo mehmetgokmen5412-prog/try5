@@ -22,4 +22,10 @@ public class PlayerHealth : MonoBehaviour
         print("öldün");
 Destroy (gameObject);
     }
+    public void TakeDamage(int damage)
+    {
+        // Canını burada azalt
+        // health -= damage; 
+        Debug.Log("Hasar alındı!");
+    }
 }

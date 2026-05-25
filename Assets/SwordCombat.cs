@@ -3,26 +3,34 @@ using System.Collections;
 
 public class SwordCombat : MonoBehaviour
 {
-    [Header("Saldırı Ayarları")]
     public Transform attackPoint;
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
+    public int attackDamage = 10;
     public float attackCooldown = 1.5f;
-
-    [Header("Animasyon Ayarları")]
     public Animator anim;
 
     private bool isAttacking = false;
 
     void Update()
     {
-        // Karakterin yönünü al (Scale X değeri 1 ise sağ, -1 ise sol)
-        float horizontal = transform.localScale.x;
+        // 1. FAREYE GÖRE DÖNME VE ATTACKPOINT HİZALAMA
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        // AttackPoint'in Y ve Z'sini sabit tut, X'i yönle çarp
-        // 0.5f değerini kılıcın uzaklığına göre 0.7f veya 0.8f yapabilirsin
-        attackPoint.localPosition = new Vector3(0.5f * (horizontal > 0 ? 1 : -1), 0, 0);
+        if (mousePos.x > transform.position.x)
+        {
+            // Fare sağda: Karakteri sağa bakacak şekilde ayarla
+            transform.localScale = new Vector3(1, 1, 1);
+            attackPoint.localPosition = new Vector3(Mathf.Abs(attackPoint.localPosition.x), attackPoint.localPosition.y, 0);
+        }
+        else
+        {
+            // Fare solda: Karakteri sola bakacak şekilde ayarla
+            transform.localScale = new Vector3(-1, 1, 1);
+            attackPoint.localPosition = new Vector3(-Mathf.Abs(attackPoint.localPosition.x), attackPoint.localPosition.y, 0);
+        }
 
+        // 2. SALDIRI
         if (Input.GetKeyDown(KeyCode.F) && !isAttacking)
         {
             StartCoroutine(AttackRoutine());
@@ -35,10 +43,9 @@ public class SwordCombat : MonoBehaviour
         if (anim != null) anim.SetTrigger("Attack");
 
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
-
         foreach (Collider2D enemy in hitEnemies)
         {
-            Debug.Log("Vurulan: " + enemy.name);
+            Debug.Log("Vuruldu: " + enemy.name);
         }
 
         yield return new WaitForSeconds(attackCooldown);
@@ -47,10 +54,6 @@ public class SwordCombat : MonoBehaviour
 
     void OnDrawGizmosSelected()
     {
-        if (attackPoint != null)
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(attackPoint.position, attackRange);
-        }
+        if (attackPoint != null) Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 }

@@ -32,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.51, y: 1.53, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalScale: {x: 0.48735, y: 0.48735, z: 0.48735}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
   Hiz: 2
   DurmaMesafe: 1
-  Hedef: {fileID: 3262583231747721305, guid: 88c7fbae23e750d4daa5ec181559081c, type: 3}
+  Hedef: {fileID: 0}
   hasarAraligi: 1
 --- !u!50 &7029834047877210395
 Rigidbody2D:
